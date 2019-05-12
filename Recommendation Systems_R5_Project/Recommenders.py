@@ -26,7 +26,10 @@ class popularity_recommender_py():
         train_data_sort['Rank'] = train_data_sort['score'].rank(ascending=0, method='first')
         
         #Get the top 10 recommendations
-        self.popularity_recommendations = train_data_sort.head(10)
+#        self.popularity_recommendations = train_data_sort.head(10)
+        
+        #Get the top 5 recommendations
+        self.popularity_recommendations = train_data_sort.head(5)        
 
     #Use the popularity based recommender system model to
     #make recommendations
@@ -43,7 +46,6 @@ class popularity_recommender_py():
         
         return user_recommendations
     
-
 #Class for Item similarity based Recommender System model
 class item_similarity_recommender_py():
     def __init__(self):

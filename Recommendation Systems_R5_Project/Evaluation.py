@@ -48,15 +48,18 @@ class precision_recall_calculator():
             #Get items for user_id from item similarity model
             print("Getting recommendations for user:%s" % user_id)
             user_sim_items = self.model2.recommend(user_id)
-            self.ism_training_dict[user_id] = list(user_sim_items["song"])
+#            self.ism_training_dict[user_id] = list(user_sim_items["song"])
+            self.ism_training_dict[user_id] = list(user_sim_items["productId"])
     
             #Get items for user_id from popularity model
             user_sim_items = self.model1.recommend(user_id)
-            self.pm_training_dict[user_id] = list(user_sim_items["song"])
+#            self.pm_training_dict[user_id] = list(user_sim_items["song"])
+            self.pm_training_dict[user_id] = list(user_sim_items["productId"])
     
             #Get items for user_id from test_data
             test_data_user = self.test_data[self.test_data['user_id'] == user_id]
-            self.test_dict[user_id] = set(test_data_user['song'].unique() )
+#            self.test_dict[user_id] = set(test_data_user['song'].unique())
+            self.test_dict[user_id] = set(test_data_user['productId'].unique()) 
     
     #Method to calculate the precision and recall measures
     def calculate_precision_recall(self):
